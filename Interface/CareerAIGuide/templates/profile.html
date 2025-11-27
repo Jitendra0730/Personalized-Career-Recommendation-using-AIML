@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="card-title mb-0">
+                        <i class="fas fa-magic me-2"></i>
+                        {% if profile %}Update Your Information{% else %}Get Career Recommendations{% endif %}
+                    </h3>
+                    <p class="mb-0 mt-2">
+                        {% if profile %}
+                            Update your profile to get better recommendations
+                        {% else %}
+                            Tell us about yourself to get personalized career suggestions
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="card-body p-4">
+                    <form method="POST" novalidate>
+                        {{ form.hidden_tag() }}
+                        
+                        <!-- Personal Information Section -->
+                        <div class="section-header mb-4">
+                            <h5 class="text-primary">
+                                <i class="fas fa-user me-2"></i>Personal Information
+                            </h5>
+                            <hr class="mt-2">
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="mb-3">
+                                    {{ form.full_name.label(class="form-label") }}
+                                    {{ form.full_name(class="form-control" + (" is-invalid" if form.full_name.errors else ""), placeholder="Enter your full name") }}
+                                    {% if form.full_name.errors %}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.full_name.errors %}{{ error }}{% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    {{ form.age.label(class="form-label") }}
+                                    {{ form.age(class="form-control" + (" is-invalid" if form.age.errors else ""), placeholder="Age") }}
+                                    {% if form.age.errors %}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.age.errors %}{{ error }}{% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Professional Information Section -->
+                        <div class="section-header mb-4 mt-4">
+                            <h5 class="text-primary">
+                                <i class="fas fa-briefcase me-2"></i>Professional Information
+                            </h5>
+                            <hr class="mt-2">
+                        </div>
+                        
+                        <div class="mb-3">
+                            {{ form.current_profession.label(class="form-label") }}
+                            {{ form.current_profession(class="form-control" + (" is-invalid" if form.current_profession.errors else ""), placeholder="e.g., Software Developer, Marketing Manager") }}
+                            {% if form.current_profession.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.current_profession.errors %}{{ error }}{% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    {{ form.education_level.label(class="form-label") }}
+                                    {{ form.education_level(class="form-select" + (" is-invalid" if form.education_level.errors else "")) }}
+                                    {% if form.education_level.errors %}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.education_level.errors %}{{ error }}{% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    {{ form.years_of_experience.label(class="form-label") }}
+                                    {{ form.years_of_experience(class="form-control" + (" is-invalid" if form.years_of_experience.errors else ""), placeholder="Years") }}
+                                    {% if form.years_of_experience.errors %}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.years_of_experience.errors %}{{ error }}{% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            {{ form.area_of_interests.label(class="form-label") }}
+                            {{ form.area_of_interests(class="form-control" + (" is-invalid" if form.area_of_interests.errors else ""), rows="3", placeholder="Describe your professional interests, hobbies, and what excites you...") }}
+                            <div class="form-text">{{ form.area_of_interests.description }}</div>
+                            {% if form.area_of_interests.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.area_of_interests.errors %}{{ error }}{% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3">
+                            {{ form.career_goals.label(class="form-label") }}
+                            {{ form.career_goals(class="form-control" + (" is-invalid" if form.career_goals.errors else ""), rows="3", placeholder="What do you want to achieve in your career? Short-term and long-term goals...") }}
+                            <div class="form-text">{{ form.career_goals.description }}</div>
+                            {% if form.career_goals.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.career_goals.errors %}{{ error }}{% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3">
+                            {{ form.current_skills.label(class="form-label") }}
+                            {{ form.current_skills(class="form-control" + (" is-invalid" if form.current_skills.errors else ""), rows="3", placeholder="List your technical skills, programming languages, tools, soft skills...") }}
+                            <div class="form-text">{{ form.current_skills.description }}</div>
+                            {% if form.current_skills.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.current_skills.errors %}{{ error }}{% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Work Preferences Section -->
+                        <div class="section-header mb-4 mt-4">
+                            <h5 class="text-primary">
+                                <i class="fas fa-cogs me-2"></i>Work Preferences
+                            </h5>
+                            <hr class="mt-2">
+                        </div>
+                        
+                        <div class="mb-3">
+                            {{ form.preferred_work_environment.label(class="form-label") }}
+                            {{ form.preferred_work_environment(class="form-select" + (" is-invalid" if form.preferred_work_environment.errors else "")) }}
+                            {% if form.preferred_work_environment.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.preferred_work_environment.errors %}{{ error }}{% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    {{ form.expected_salary_min.label(class="form-label") }}
+                                    <div class="input-group">
+                                        <span class="input-group-text">₹</span>
+                                        {{ form.expected_salary_min(class="form-control" + (" is-invalid" if form.expected_salary_min.errors else ""), placeholder="40000") }}
+                                    </div>
+                                    {% if form.expected_salary_min.errors %}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.expected_salary_min.errors %}{{ error }}{% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    {{ form.expected_salary_max.label(class="form-label") }}
+                                    <div class="input-group">
+                                        <span class="input-group-text">₹</span>
+                                        {{ form.expected_salary_max(class="form-control" + (" is-invalid" if form.expected_salary_max.errors else ""), placeholder="80000") }}
+                                    </div>
+                                    {% if form.expected_salary_max.errors %}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.expected_salary_max.errors %}{{ error }}{% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="form-check">
+                                {{ form.willing_to_relocate(class="form-check-input") }}
+                                {{ form.willing_to_relocate.label(class="form-check-label") }}
+                            </div>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a href="{{ url_for('index') }}" class="btn btn-secondary me-md-2">
+                                <i class="fas fa-arrow-left me-2"></i>Back to Home
+                            </a>
+                            <button type="submit" class="btn btn-success btn-lg">
+                                <i class="fas fa-paper-plane me-2"></i>Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

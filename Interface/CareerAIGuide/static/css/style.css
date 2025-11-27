@@ -1,0 +1,257 @@
+/* Custom styles for Career Compass */
+
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --success-color: #198754;
+    --info-color: #0dcaf0;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+}
+
+/* Body and general styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+/* Utility classes */
+.min-vh-75 {
+    min-height: 75vh;
+}
+
+/* Hero section */
+.hero-section {
+    background-image: url('/static/images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Adjustable darkness */
+    z-index: 1;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2; /* Puts text above the overlay */
+}
+
+
+
+/* Feature cards */
+.features-section .card {
+    transition: transform 0.3s ease-in-out;
+    border: none;
+}
+
+.features-section .card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    transition: transform 0.3s ease-in-out;
+}
+
+.features-section .card:hover .feature-icon {
+    transform: scale(1.1);
+}
+
+/* Navigation */
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Form styling */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.section-header h5 {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.section-header hr {
+    border-color: var(--bs-primary);
+    opacity: 0.3;
+}
+
+/* Cards */
+.card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-header {
+    border-bottom: none;
+    font-weight: 600;
+}
+
+/* Progress bar */
+.progress {
+    border-radius: 10px;
+}
+
+.progress-bar {
+    background: linear-gradient(45deg, var(--bs-success), #20c997);
+}
+
+/* Button styles */
+.btn {
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-lg {
+    padding: 0.75rem 2rem;
+}
+
+/* Alert styles */
+.alert {
+    border-radius: 8px;
+    border: none;
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    .display-6 {
+        font-size: 2rem;
+    }
+    
+    .card-body {
+        padding: 2rem 1rem;
+    }
+}
+
+/* Loading animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Form validation styles */
+.was-validated .form-control:valid,
+.form-control.is-valid {
+    border-color: var(--bs-success);
+}
+
+.was-validated .form-control:invalid,
+.form-control.is-invalid {
+    border-color: var(--bs-danger);
+}
+
+/* Custom checkbox and radio styles */
+.form-check-input:checked {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
+/* Textarea resize */
+textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Icon spacing */
+.fa, .fas, .far, .fab {
+    margin-right: 0.25rem;
+}
+
+/* Dark theme adjustments */
+[data-bs-theme="dark"] .bg-light {
+    background-color: var(--bs-gray-800) !important;
+}
+
+[data-bs-theme="dark"] .text-muted {
+    color: var(--bs-gray-400) !important;
+}
+
+/* Hover effects for interactive elements */
+.card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Profile completion indicator */
+.progress-bar {
+    transition: width 0.6s ease;
+}
+
+/* Login Page Enhancements */
+.login-image-wrapper {
+    position: relative;
+    height: 350px;
+    width: 350px; /* adjust to fit */
+    border-radius: 25px;
+    overflow: hidden; /* cuts corners */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* makes it fill properly */
+    display: block;
+}
+
+
+
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bs-gray-200);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bs-gray-400);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--bs-gray-500);
+}

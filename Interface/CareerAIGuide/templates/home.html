@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Welcome Section -->
+    <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+            <div class="welcome-section mb-5">
+                <h1 class="display-4 fw-bold mb-4">
+                    <i class="fas fa-compass me-3 text-primary"></i>
+                    Welcome to Career Compass
+                </h1>
+                <p class="lead text-muted mb-4">
+                    Hello {{ current_user.username }}! Ready to discover your perfect career path? 
+                    Let's analyze your skills, interests, and goals to provide personalized recommendations.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Action Section -->
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow-lg border-0">
+                <div class="card-body p-5 text-center">
+                    <div class="mb-4">
+                        <i class="fas fa-rocket text-primary" style="font-size: 4rem;"></i>
+                    </div>
+                    <h3 class="card-title mb-3">Get Your Career Recommendations</h3>
+                    <p class="card-text text-muted mb-4">
+                        Answer a few questions about yourself, and we'll provide personalized career 
+                        suggestions based on your interests, skills, and professional goals.
+                    </p>
+                    
+                    {% set profile = current_user.career_profile %}
+                    {% if profile %}
+                        <div class="mb-4">
+                            <small class="text-success">
+                                <i class="fas fa-check-circle me-1"></i>
+                                Profile completed! You can update it anytime.
+                            </small>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <a href="{{ url_for('profile') }}" class="btn btn-primary btn-lg">
+                                <i class="fas fa-magic me-2"></i>Start Getting Recommendations
+                            </a>
+                            <a href="{{ url_for('profile') }}" class="btn btn-outline-secondary">
+                                <i class="fas fa-edit me-2"></i>Update Profile
+                            </a>
+                        </div>
+                    {% else %}
+                        <div class="d-grid">
+                            <a href="{{ url_for('profile') }}" class="btn btn-primary btn-lg">
+                                <i class="fas fa-magic me-2"></i>Start Getting Recommendations
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Preview -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <h4 class="text-center mb-4">What We'll Analyze</h4>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 bg-light">
+                <div class="card-body text-center">
+                    <i class="fas fa-user text-primary mb-3" style="font-size: 2rem;"></i>
+                    <h6 class="card-title">Personal Profile</h6>
+                    <p class="card-text small text-muted">
+                        Your background, experience level, and education
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 bg-light">
+                <div class="card-body text-center">
+                    <i class="fas fa-heart text-primary mb-3" style="font-size: 2rem;"></i>
+                    <h6 class="card-title">Interests & Goals</h6>
+                    <p class="card-text small text-muted">
+                        What you're passionate about and want to achieve
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 bg-light">
+                <div class="card-body text-center">
+                    <i class="fas fa-cogs text-primary mb-3" style="font-size: 2rem;"></i>
+                    <h6 class="card-title">Skills & Preferences</h6>
+                    <p class="card-text small text-muted">
+                        Your abilities and ideal work environment
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Stats -->
+    {% if profile %}
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="card bg-primary text-white">
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-md-3">
+                                <h3 class="mb-1">{{ profile.full_name }}</h3>
+                                <small>Profile Name</small>
+                            </div>
+                            <div class="col-md-3">
+                                <h3 class="mb-1">{{ profile.years_of_experience or 0 }}</h3>
+                                <small>Years Experience</small>
+                            </div>
+                            <div class="col-md-3">
+                                <h3 class="mb-1">{{ profile.education_level.replace('_', ' ').title() if profile.education_level else 'Not Set' }}</h3>
+                                <small>Education Level</small>
+                            </div>
+                            <div class="col-md-3">
+                                <h3 class="mb-1">{{ profile.preferred_work_environment.replace('_', ' ').title() if profile.preferred_work_environment else 'Not Set' }}</h3>
+                                <small>Work Style</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <!-- Navigation Links -->
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <div class="btn-group" role="group">
+                <a href="{{ url_for('dashboard') }}" class="btn btn-outline-primary">
+                    <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                </a>
+                <a href="{{ url_for('profile') }}" class="btn btn-outline-primary">
+                    <i class="fas fa-user me-2"></i>Profile
+                </a>
+                <a href="{{ url_for('logout') }}" class="btn btn-outline-secondary">
+                    <i class="fas fa-sign-out-alt me-2"></i>Logout
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

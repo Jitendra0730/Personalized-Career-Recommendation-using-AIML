@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h1 class="display-6 fw-bold">
+                        <i class="fas fa-tachometer-alt me-3"></i>
+                        Welcome, {{ current_user.username }}!
+                    </h1>
+                    <p class="lead text-muted">Manage your career profile and view recommendations</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row g-4">
+        <!-- Profile Status Card -->
+        <div class="col-lg-8">
+            <div class="card h-100">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0">
+                        <i class="fas fa-user me-2"></i>Profile Status
+                    </h5>
+                </div>
+                <div class="card-body">
+                    {% if profile %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6 class="text-muted">Personal Information</h6>
+                                <p><strong>Name:</strong> {{ profile.full_name }}</p>
+                                {% if profile.age %}
+                                    <p><strong>Age:</strong> {{ profile.age }}</p>
+                                {% endif %}
+                                {% if profile.current_profession %}
+                                    <p><strong>Current Profession:</strong> {{ profile.current_profession }}</p>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="text-muted">Career Information</h6>
+                                {% if profile.years_of_experience %}
+                                    <p><strong>Experience:</strong> {{ profile.years_of_experience }} years</p>
+                                {% endif %}
+                                {% if profile.education_level %}
+                                    <p><strong>Education:</strong> {{ profile.education_level.replace('_', ' ').title() }}</p>
+                                {% endif %}
+                                {% if profile.preferred_work_environment %}
+                                    <p><strong>Work Environment:</strong> {{ profile.preferred_work_environment.replace('_', ' ').title() }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        {% if profile.area_of_interests %}
+                            <div class="mt-3">
+                                <h6 class="text-muted">Areas of Interest</h6>
+                                <p>{{ profile.area_of_interests }}</p>
+                            </div>
+                        {% endif %}
+                        
+                        {% if profile.career_goals %}
+                            <div class="mt-3">
+                                <h6 class="text-muted">Career Goals</h6>
+                                <p>{{ profile.career_goals }}</p>
+                            </div>
+                        {% endif %}
+                        
+                        <div class="mt-4">
+                            <a href="{{ url_for('profile') }}" class="btn btn-primary">
+                                <i class="fas fa-edit me-2"></i>Update Profile
+                            </a>
+                        </div>
+                    {% else %}
+                        <div class="text-center py-4">
+                            <i class="fas fa-user-circle text-muted" style="font-size: 4rem;"></i>
+                            <h5 class="mt-3">Profile Not Complete</h5>
+                            <p class="text-muted">Complete your career profile to get personalized recommendations.</p>
+                            <a href="{{ url_for('profile') }}" class="btn btn-primary btn-lg">
+                                <i class="fas fa-plus me-2"></i>Create Profile
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quick Actions Card -->
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="card-title mb-0">
+                        <i class="fas fa-bolt me-2"></i>Quick Actions
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a href="{{ url_for('profile') }}" class="btn btn-outline-primary">
+                            <i class="fas fa-user-edit me-2"></i>
+                            {% if profile %}Update{% else %}Create{% endif %} Profile
+                        </a>
+                        {% if profile %}
+                            <button class="btn btn-outline-success" disabled>
+                                <i class="fas fa-magic me-2"></i>Get Recommendations
+                                <small class="d-block text-muted">Coming Soon</small>
+                            </button>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Profile Completion Card -->
+            {% if profile %}
+                <div class="card mt-4">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-chart-pie me-2"></i>Profile Completion
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        {% set completion_items = [
+                            profile.full_name,
+                            profile.age,
+                            profile.current_profession,
+                            profile.area_of_interests,
+                            profile.career_goals,
+                            profile.current_skills,
+                            profile.preferred_work_environment,
+                            profile.education_level
+                        ] %}
+                        {% set completed_count = completion_items | select | list | length %}
+                        {% set total_count = completion_items | length %}
+                        {% set completion_percentage = (completed_count / total_count * 100) | round | int %}
+                        
+                        <div class="progress mb-3" style="height: 20px;">
+                            <div class="progress-bar" role="progressbar" 
+                                 style="width: {{ completion_percentage }}%;" 
+                                 aria-valuenow="{{ completion_percentage }}" 
+                                 aria-valuemin="0" aria-valuemax="100">
+                                {{ completion_percentage }}%
+                            </div>
+                        </div>
+                        <p class="mb-0">{{ completed_count }} of {{ total_count }} sections completed</p>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <!-- Career Recommendations Section (Placeholder) -->
+    {% if profile %}
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-star me-2"></i>Career Recommendations
+                        </h5>
+                    </div>
+                    <div class="card-body text-center py-5">
+                        <i class="fas fa-rocket text-muted" style="font-size: 4rem;"></i>
+                        <h5 class="mt-3">AI-Powered Recommendations Coming Soon</h5>
+                        <p class="text-muted">We're working on implementing advanced AI algorithms to provide you with personalized career recommendations based on your profile.</p>
+                        <button class="btn btn-success" disabled>
+                            <i class="fas fa-magic me-2"></i>Generate Recommendations
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
