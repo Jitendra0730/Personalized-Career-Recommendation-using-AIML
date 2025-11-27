@@ -1,0 +1,1 @@
+r"C:\Users\metro\Desktop\UDP 7th Sem\Personalised Carrier Recommendation using AI\New Dataset MODEL\New Dataset\job_recommendation_dataset.csv"

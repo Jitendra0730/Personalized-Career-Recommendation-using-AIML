@@ -1,0 +1,53 @@
+1. Target Users:
+Q- Who is the primary user of this system? (e.g., students, job seekers, working professionals?)
+Ans:-Anyone who dont know what to do or need guidance related to any specific carrier or need to know which carrier to choose in today's world. it can be a student, a college dropout, a job seeker, or a working profession who is thinking to shift from his previous job. 
+
+Q- Is it meant for Indian users only or global users?
+Ans:- Yes for now it is meant for Indian users. 
+
+2. Input Data:
+Q- What kind of data will the user provide? (e.g., resume, interests, skills, education, job history, LinkedIn profile?)
+Ans:- i think there should be option first like, if you want to know directly which carrier is good for today's world. so the user will just go through the list of trending jobs and requirement and salary it offers. The second option can be like the user input their interest, their hobbies, their skills, their history(if they have worked before), their goal etc. which will help us to know what details to provide them. 
+
+
+Q- Will you allow users to input their data manually, upload files (like PDF), or fetch it from external sources?
+Ans:- For now to make it smooth and simple, we will just take the inputs manually. No data uploading or fetching from other sources. 
+
+3. Career Recommendation Logic:
+Q- Will you use existing datasets or train your own AI model?
+Ans:- If i could find Dataset of Indian Job trends over the past year then i would train my model based on the data sets. but if i couldn't find any data set then i would need to go with creating own AI model without dataset.
+
+Q- Should recommendations be based on user profile + job market trends? Or based on personality/interest tests too (like MBTI, RIASEC)?
+Ans:- Recommendation should be based on the user interests in different fields ( like Data analyst, Painting, Lawyer, doctor, each type of engineer and many more) , Skills (like communication, entrepreneur, any specific coding skills, Analyst, Drawing and designing, and many more skills ), Which type of Job he is seeking (like work from home , full time, part time etc.), salary he is expecting, etc. ( you can add if you can find any other important aspect ).
+
+4. Skill Tracker:
+Q- Will users track their skill progress manually or will the system analyze it automatically?
+Ans:- Yes, track their skills manually. Like if the user want to learn a new coding skills then the user will create daily goals for that and then manully click completed button to mark it as completed. Also we can add options where the user search the particular skills and get the videos from youtube or any other platform related to that. For interaction we can add daily milestone achieved by the user on completion of the goal.
+
+Q- Will you integrate with platforms like Coursera, LinkedIn Learning, etc., to fetch their completed courses?
+Ans:- No, we will take input from user directly in the form of interest or skills or any other aspect. 
+
+5. AI Use:
+Q- Where do you plan to use AI? (e.g., recommendation engine, resume parsing, skill gap analysis, personalized roadmaps?)
+Ans:- where ever it is required. Like recommending carrier, trending jobs with salary, skills tracking, roadmap to achieve that job etc.
+
+6. Insights & Reports:
+Q- What kind of insights do you want to show the user? (e.g., top 3 recommended careers, skills in demand, growth path, learning progress?)
+Ans:- TOp 5 or Top 10 Jobs or carrier field in todays world with the salary, with few options like Know more, Roadmap etc. For each carrier. SO that the user can know about the carrier and if he wants to pursue then the roadmap will guide the user. Road map should include things like Which exams to pursue(like UPSC for IPS-IAS, Jee mains and Advance for Engineering, Neet for Doctoring, Or any other exam for other fields); Include this details based on the user data like if he is a student who want to go toh college then this exams will be good option but if he is a college students, or a professional worker looking for job exchange than this exams are not necesarry to show in roadmap. 
+
+Q- Do you want visualizations like charts and progress bars?
+Ans:- Yes i want Charts, bar charts, pie charts etc; for Comparing different jobs with salary, Tracking skills on daily, weekly, monthly basis, and where ever it is required.
+
+7. Technology Preference:
+Q- Do you have any preferred technology stack? (e.g., Python, Flask/Django, React, Firebase, MongoDB, etc.)
+Ans:- I will go with python. also i am a student so i dont know this Trending Laguage like MongoDB React Firebase etc. for database any type of SQL will be good. 
+
+Q- Do you want a web app, mobile app, or both?
+Ans:- A web based.
+
+8. Team & Timeline:
+Q- Are you working solo or in a team?
+Ans:- i am working solo. that's why i want to make this project as good as much as i can so that i stand out for doing a lot of work alone.
+
+Q- What is your timeline to complete the project (month-wise milestone if possible)?
+Ans:- Today is 30th June 2025. I have to Complete it By the end of September or mid October.
